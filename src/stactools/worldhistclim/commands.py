@@ -2,21 +2,21 @@ import logging
 
 import click
 
-from stactools.ephemeral import stac
+from stactools.worldhistclim import stac
 
 logger = logging.getLogger(__name__)
 
 
-def create_ephemeralcmd_command(cli):
-    """Creates the stactools-ephemeral command line utility."""
+def create_worldhistclim_command(cli):
+    """Creates the stactools-worldhistclim command line utility."""
     @cli.group(
-        "ephemeralcmd",
-        short_help=("Commands for working with stactools-ephemeral"),
+        "worldhistclim",
+        short_help=("Commands for working with stactools-worldhistclim"),
     )
-    def ephemeralcmd():
+    def worldhistclim():
         pass
 
-    @ephemeralcmd.command(
+    @worldhistclim.command(
         "create-collection",
         short_help="Creates a STAC collection",
     )
@@ -35,7 +35,7 @@ def create_ephemeralcmd_command(cli):
 
         return None
 
-    @ephemeralcmd.command("create-item", short_help="Create a STAC item")
+    @worldhistclim.command("create-item", short_help="Create a STAC item")
     @click.argument("source")
     @click.argument("destination")
     def create_item_command(source: str, destination: str):
@@ -51,4 +51,4 @@ def create_ephemeralcmd_command(cli):
 
         return None
 
-    return ephemeralcmd
+    return worldhistclim
